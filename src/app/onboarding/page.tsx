@@ -3,7 +3,7 @@ import CopilotChat from "@/components/copilot/CopilotChat";
 
 export default function Page() {
   return (
-    <MuiAppSidebar title="Quick start" defaultCollapsed>
+    <MuiAppSidebar title="DC-Copilot" defaultCollapsed>
       <CopilotChat />
     </MuiAppSidebar>
   );
