@@ -32,17 +32,17 @@ import type { Action } from "@/lib/copilot/engine";
 
 export type Emit = { action: (a: Action) => void; text: (t: string) => void };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type P = Record<string, any>;
+export type P = Record<string, any>;
 
 // ---------------- shared primitives ----------------
 // Shared easing — one smooth curve everywhere so motion feels consistent.
-const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
-const TR = `all .18s ${EASE}`;
+export const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+export const TR = `all .18s ${EASE}`;
 
-function Card({ children, sx }: { children: React.ReactNode; sx?: object }) {
+export function Card({ children, sx }: { children: React.ReactNode; sx?: object }) {
   return <Box sx={{ bgcolor: T.surface, border: `1px solid ${T.border}`, borderRadius: `${T.radius}px`, p: 1.5, boxShadow: T.shadow, ...sx }}>{children}</Box>;
 }
-function PriBtn({ children, onClick, loading, disabled, full, sx }: { children: React.ReactNode; onClick?: () => void; loading?: boolean; disabled?: boolean; full?: boolean; sx?: object }) {
+export function PriBtn({ children, onClick, loading, disabled, full, sx }: { children: React.ReactNode; onClick?: () => void; loading?: boolean; disabled?: boolean; full?: boolean; sx?: object }) {
   const dead = disabled || loading;
   return (
     <Box onClick={() => !dead && onClick?.()} sx={{
@@ -53,7 +53,7 @@ function PriBtn({ children, onClick, loading, disabled, full, sx }: { children: 
     }}>{loading && <CircularProgress size={13} sx={{ color: "#fff" }} />}{children}</Box>
   );
 }
-function GhostBtn({ children, onClick, active, sx }: { children: React.ReactNode; onClick?: () => void; active?: boolean; sx?: object }) {
+export function GhostBtn({ children, onClick, active, sx }: { children: React.ReactNode; onClick?: () => void; active?: boolean; sx?: object }) {
   return (
     <Box onClick={onClick} sx={{
       display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 0.4, height: 31, px: 1.4, borderRadius: 1.5,
@@ -137,7 +137,7 @@ function Dropdown({ value, options, onChange, placeholder }: { value?: string; o
   );
 }
 
-function Toggle({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
+export function Toggle({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
   return (
     <Box onClick={() => onChange(!checked)} sx={{ width: 34, height: 20, borderRadius: 100, bgcolor: checked ? T.accent : "#D6DAE2", position: "relative", cursor: "pointer", transition: `background .2s ${EASE}`, flexShrink: 0 }}>
       <Box sx={{ position: "absolute", top: 2, left: checked ? 16 : 2, width: 16, height: 16, borderRadius: "50%", bgcolor: "#fff", boxShadow: "0 1px 3px rgba(0,0,0,.22)", transition: `left .2s ${EASE}` }} />
@@ -820,7 +820,7 @@ const CHIP: Record<string, { bg: string; fg: string }> = {
   paused: { bg: "#EEF0F3", fg: T.textMuted }, skipped: { bg: "#EEF0F3", fg: T.textMuted },
   stale: { bg: T.warnBg, fg: T.warn }, warning: { bg: T.warnBg, fg: T.warn }, expiring: { bg: T.warnBg, fg: T.warn }, timeout: { bg: T.warnBg, fg: T.warn },
 };
-function StatusChip({ value }: { value: string }) {
+export function StatusChip({ value }: { value: string }) {
   const c = CHIP[value.toLowerCase().split(" ")[0]] ?? { bg: "#EEF0F3", fg: T.textMuted };
   return <Box component="span" sx={{ display: "inline-block", fontSize: 9.5, fontWeight: 500, letterSpacing: ".02em", textTransform: "capitalize", color: c.fg, bgcolor: c.bg, px: 0.65, py: 0.2, borderRadius: 0.75, whiteSpace: "nowrap" }}>{value}</Box>;
 }

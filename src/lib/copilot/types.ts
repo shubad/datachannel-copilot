@@ -43,6 +43,31 @@ export type ComponentId =
   | "code" // SQL / JSON block with copy
   | "digest" // pipeline health digest
   | "log" // terminal-style run log (finer failure detail)
+  // task-specific responses (components/copilot/responses)
+  | "incidents" // failures today: 24h timeline + grouped by action class
+  | "diagnosis" // why it failed: cause chain, facts, blast radius, fix plan
+  | "schedule" // a pipeline's schedule: next run, day track, last runs
+  | "credentials" // credential expiry meters
+  | "freshness" // staleness vs expected cadence
+  | "volume" // rows processed: hero + daily columns
+  | "changes" // audit trail with diffs
+  | "bulkrun" // live bulk re-run progress
+  | "agenda" // tomorrow's runs as 24h lanes
+  | "ranking" // errors by connector
+  | "authflow" // credential re-authorisation steps
+  | "preview" // typed data grid sample
+  | "schema" // searchable schema explorer
+  | "transform" // lineage + SQL transform builder
+  | "segment" // rule sentence + audience funnel
+  | "mapping" // reverse-ETL field mapping
+  | "workflow" // orchestration node flow
+  | "leaderboard" // ranked analytics bars
+  | "invite" // invite with live role permissions
+  | "alertrule" // alert rule + message preview
+  | "credits" // credit meter with forecast
+  | "wssetup" // new client workspace
+  | "share" // usage share by workspace
+  | "receipt" // confirmation of a completed action
   | "flag" // blue/amber/red annotation
   | "text"; // plain assistant prose
 

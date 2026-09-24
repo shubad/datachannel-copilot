@@ -26,6 +26,7 @@ import {
   ExistingPipelinePicker, EditPanel, BulkResult,
   StatRow, DataTable, ListCard, DetailCard, CodeCard, HealthDigest, LogCard, type Emit,
 } from "./library";
+import { RESPONSE_REGISTRY } from "./responses";
 
 // Fixed component library: id → renderer. The engine only ever names one of these.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -35,6 +36,7 @@ const REGISTRY: Record<string, React.ComponentType<{ props: any; emit: Emit }>> 
   C13: Handoff, C17: ScopeBoundary, C18: ExistingPipelinePicker, C19: EditPanel,
   C20: BulkResult, flag: Flag, text: TextBlock,
   stats: StatRow, table: DataTable, list: ListCard, detail: DetailCard, code: CodeCard, digest: HealthDigest, log: LogCard,
+  ...RESPONSE_REGISTRY,
 };
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
